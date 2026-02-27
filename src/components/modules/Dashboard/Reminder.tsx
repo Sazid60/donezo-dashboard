@@ -19,7 +19,7 @@ export function Reminder({ title, time }: ReminderProps) {
           <h2 className="mb-4 text-base font-display font-semibold text-gray-900 sm:mb-5">Reminders</h2>
 
           <div>
-            <p className="mb-4 text-2xl leading-tight font-display font-semibold text-gray-900 sm:mb-5 sm:text-3xl">
+            <p className="mb-4 text-xl lg:text-xl xl:text-2xl leading-tight font-display font-semibold text-gray-900 sm:mb-5">
               {title}
             </p>
             <p className="text-sm text-gray-500">Time: {time}</p>

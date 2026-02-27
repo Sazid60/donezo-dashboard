@@ -62,7 +62,7 @@ export function BarChart({ data }: { data: BarData[] }) {
                 />
               </div>
 
-              <span className="absolute -bottom-7 text-[11px] font-semibold text-gray-400 sm:-bottom-8 sm:text-xs">
+              <span className="absolute text-[11px] font-semibold text-gray-400  -bottom-4 lg:-bottom-8 sm:text-xs">
                 {bar.day}
               </span>
             </div>
