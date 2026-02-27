@@ -1,6 +1,8 @@
-# Donezo — Task Management Dashboard
+# Donezo —  Dashboard
 
-A production-grade React + TypeScript task management dashboard built for the Frontend Intern assignment.
+## Live Link: [https://dashboard-app-flame-nine.vercel.app/](https://dashboard-app-flame-nine.vercel.app/)
+
+A production-grade React + TypeScript dashboard built for the Frontend Intern assignment.
 
 ## 🛠 Tech Stack
 
@@ -47,7 +49,6 @@ src/
 │   └── auth.context.tsx          ← AuthContext (login/logout/rehydrate)
 ├── lib/
 │   ├── axios.ts                  ← Axios instance + JWT interceptor
-│   ├── fakeData.ts               ← all dashboard mock data
 │   └── utils.ts                  ← cn() helper
 ├── pages/
 │   ├── PublicRoutes/Auth/Login.tsx  ← login page
