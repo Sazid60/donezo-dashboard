@@ -1,73 +1,154 @@
-# React + TypeScript + Vite
+# Donezo — Task Management Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A production-grade React + TypeScript task management dashboard built for the Frontend Intern assignment.
 
-Currently, two official plugins are available:
+## 🛠 Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 18** + **TypeScript** (strict mode)
+- **Vite 5** — fast dev server and build tool
+- **Tailwind CSS 3** — utility-first styling with custom `brand-*` color palette
+- **shadcn/ui pattern** — reusable component library (Button, Input, Label, Form, Badge)
+- **React Hook Form** + **Zod** — type-safe form validation
+- **Framer Motion** — animations and transitions
+- **React Router DOM v6** — client-side routing with protected routes
+- **Axios** — HTTP client with JWT interceptor
+- **JWT Auth** — token stored in `localStorage`, rehydrated on page load
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📁 Project Structure
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── components/
+│   ├── layouts/
+│   │   ├── layout-items/
+│   │   │   ├── Sidebar.tsx       ← navigation sidebar
+│   │   │   └── Topbar.tsx        ← header with search + user info
+│   │   └── DashboardLayout.tsx   ← layout wrapper with Outlet
+│   ├── modules/
+│   │   ├── Auth/
+│   │   │   └── LoginForm.tsx     ← RHF + Zod login form
+│   │   └── Dashboard/
+│   │       ├── StatCards.tsx     ← 4 stat summary cards
+│   │       ├── BarChart.tsx      ← weekly analytics chart
+│   │       ├── Reminder.tsx      ← meeting reminder widget
+│   │       ├── ProjectList.tsx   ← sidebar project list
+│   │       ├── TeamCollaboration.tsx ← team member statuses
+│   │       ├── ProjectProgress.tsx  ← SVG gauge chart
+│   │       └── TimeTracker.tsx   ← live timer with controls
+│   └── ui/
+│       ├── button.tsx            ← CVA button variants
+│       ├── input.tsx             ← styled text input
+│       ├── label.tsx             ← Radix label
+│       ├── form.tsx              ← RHF form primitives
+│       └── badge.tsx             ← status badges
+├── context/
+│   └── auth.context.tsx          ← AuthContext (login/logout/rehydrate)
+├── lib/
+│   ├── axios.ts                  ← Axios instance + JWT interceptor
+│   ├── fakeData.ts               ← all dashboard mock data
+│   └── utils.ts                  ← cn() helper
+├── pages/
+│   ├── PublicRoutes/Auth/Login.tsx  ← login page
+│   └── Dashboard/DashboardPage.tsx  ← main dashboard
+├── routes/
+│   └── index.tsx                 ← router with public/protected routes
+├── types/
+│   ├── index.ts                  ← shared TypeScript interfaces
+│   └── auth.type.ts              ← Zod login schema
+└── utils/
+    └── withAuth.tsx              ← ProtectedRoute + PublicOnlyRoute guards
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🚀 Installation & Setup
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Prerequisites
+- Node.js **18+** (or Bun)
+- npm / yarn / pnpm
+
+### Step 1 — Clone the repository
+```bash
+git clone https://github.com/YOUR_USERNAME/dashboard-app.git
+cd dashboard-app
 ```
+
+### Step 2 — Install dependencies
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+### Step 3 — Start dev server
+```bash
+npm run dev
+```
+Open [http://localhost:5173](http://localhost:5173)
+
+### Step 4 — Build for production
+```bash
+npm run build
+```
+
+### Step 5 — Preview production build
+```bash
+npm run preview
+```
+
+---
+
+## 🔐 Authentication
+
+The app uses JWT-based authentication against the provided REST API.
+
+| Field | Value |
+|-------|-------|
+| **Endpoint** | `POST https://task-api-eight-flax.vercel.app/api/login` |
+| **Email** | `user1@example.com` |
+| **Password** | `password123` |
+
+The JWT token is stored in `localStorage` and automatically attached to all API requests via an Axios interceptor. On page reload, the session is rehydrated from `localStorage`.
+
+---
+
+## 🔒 Protected Routes
+
+- `/login` — Public only. If already logged in → redirects to `/dashboard`
+- `/dashboard` — Protected. If not logged in → redirects to `/login`
+
+---
+
+## 🌐 Deployment (Vercel)
+
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel --prod
+```
+
+The `vercel.json` config handles SPA routing (all paths → `index.html`).
+
+---
+
+## ✨ Features
+
+- ✅ Login with email/password + Zod validation
+- ✅ JWT token auth (persistent, survives page refresh)
+- ✅ Protected routes (no dashboard access without login)
+- ✅ Public-only route (logged in users can't see login page)
+- ✅ Dashboard with 7 widgets matching the Dribbble design
+- ✅ Live time tracker with pause/stop controls
+- ✅ Animated bar chart, SVG gauge, stat cards
+- ✅ Team collaboration with status badges
+- ✅ Responsive (mobile sidebar with overlay)
+- ✅ Framer Motion animations throughout
+- ✅ TypeScript strict mode, no `any`
+- ✅ Reusable shadcn-style UI components
+- ✅ React Hook Form + Zod on all forms

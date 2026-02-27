@@ -1,13 +1,11 @@
+import { RouterProvider } from 'react-router-dom'
+import { AuthProvider } from '@/context/auth.context'
+import { router } from '@/routes'
 
-import { Outlet, ScrollRestoration } from 'react-router';
-
-function App() {
+export default function App() {
   return (
-    <>
-      <ScrollRestoration />
-      <Outlet />
-    </>
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   )
 }
-
-export default App
