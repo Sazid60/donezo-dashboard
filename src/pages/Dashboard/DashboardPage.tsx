@@ -200,7 +200,7 @@ export function DashboardPage() {
             <div className="rounded-2xl bg-white p-5 shadow-sm">
               <Reminder title={viewData.reminder.title} time={viewData.reminder.time} />
             </div>
-            <div className="h-full">
+            <div className="h-full bg-white rounded-2xl p-5 shadow-sm">
               <ProjectList projects={viewData.projects} />
             </div>
           </div>
@@ -209,7 +209,7 @@ export function DashboardPage() {
               <div className="h-full">
                 <TeamCollaboration members={viewData.teamMembers} />
               </div>
-              <div className="h-full">
+              <div className="h-full ">
                 <ProjectProgress
                   percentage={viewData.projectProgress.percentage}
                   label={viewData.projectProgress.label}

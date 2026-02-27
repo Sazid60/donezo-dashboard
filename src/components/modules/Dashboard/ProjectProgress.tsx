@@ -108,7 +108,7 @@ export function ProjectProgress({ percentage, label }: ProjectProgressProps) {
           </div>
         </div>
 
-        <div className="mt-10 flex justify-center w-full gap-2">
+        <div className="mt-10 flex md:flex-col lg:flex-row justify-center w-full gap-2">
           <div className="flex items-center gap-1.5">
             <div className="w-3.5 h-3.5 rounded-full bg-[#41835C]" />
             <span className="text-[10px] font-bold text-gray-400 uppercase">Completed</span>

@@ -16,7 +16,7 @@ export function ProjectList({ projects }: { projects: Project[] }) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.35 }}
-      className="bg-white rounded-2xl p-5 shadow-sm"
+      className=""
     >
       <div className="flex items-center justify-between mb-4">
         <h2 className="font-display font-semibold text-gray-900 text-base">Project</h2>
