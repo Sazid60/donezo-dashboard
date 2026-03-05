@@ -1,4 +1,4 @@
-# Donezo —  Dashboard
+# Donezo 
 
 ## Live Link: [https://dashboard-app-flame-nine.vercel.app/](https://dashboard-app-flame-nine.vercel.app/)
 
