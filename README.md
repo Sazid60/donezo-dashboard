@@ -1,7 +1,5 @@
 # Donezo 
 
-## Live Link: [https://dashboard-app-flame-nine.vercel.app/](https://dashboard-app-flame-nine.vercel.app/)
-
 A production-grade React + TypeScript dashboard built for the Frontend Intern assignment.
 
 ## 🛠 Tech Stack
